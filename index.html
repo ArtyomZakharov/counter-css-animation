@@ -1,58 +1,72 @@
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 16px;
-  }
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      font-size: 16px;
+    }
 
-  .container {
-    height: 22px;
-    border: 1px solid black;
-    overflow: hidden;
-    display: flex;
-  }
+    .container {
+      height: 22px;
+      border: 1px solid black;
+      overflow: hidden;
+      display: flex;
+    }
 
-  .digits-pane {
-    display: flex;
-    flex-direction: column;
-    transition: transform .3s ease-out;
-  }
+    .digits-pane {
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s ease-out;
+    }
 
-  .digits-pane span {
-    padding: 2px 3px;
-  }
+    .digits-pane span {
+      padding: 2px 3px;
+    }
 
-  .digits-pane.c-1 {
-    transform: translateY(-23px);
-  }
-  .digits-pane.c-2 {
-    transform: translateY(-46px);
-  }
-  .digits-pane.c-3 {
-    transform: translateY(-69px);
-  }
-  .digits-pane.c-4 {
-    transform: translateY(-92px);
-  }
-  .digits-pane.c-5 {
-    transform: translateY(-115px);
-  }
-  .digits-pane.c-6 {
-    transform: translateY(-138px);
-  }
-  .digits-pane.c-7 {
-    transform: translateY(-161px);
-  }
-  .digits-pane.c-8 {
-    transform: translateY(-184px);
-  }
-  .digits-pane.c-9 {
-    transform: translateY(-207px);
-  }
-</style>
+    .digits-pane.c-1 {
+      transform: translateY(-23px);
+    }
 
+    .digits-pane.c-2 {
+      transform: translateY(-46px);
+    }
+
+    .digits-pane.c-3 {
+      transform: translateY(-69px);
+    }
+
+    .digits-pane.c-4 {
+      transform: translateY(-92px);
+    }
+
+    .digits-pane.c-5 {
+      transform: translateY(-115px);
+    }
+
+    .digits-pane.c-6 {
+      transform: translateY(-138px);
+    }
+
+    .digits-pane.c-7 {
+      transform: translateY(-161px);
+    }
+
+    .digits-pane.c-8 {
+      transform: translateY(-184px);
+    }
+
+    .digits-pane.c-9 {
+      transform: translateY(-207px);
+    }
+  </style>
+</head>
+<body>
 <div class="container">
   <div class="digits-pane">
     <span>0</span>
@@ -103,15 +117,17 @@
     <span>9</span>
   </div>
 </div>
-<input id="value-holder" type="number" min="0" max="9999" value="0" onchange="handleChange()" />
+<input id="value-holder" type="number" min="0" max="9999" value="0" onchange="handleChange()"/>
 
 <script>
   function handleChange() {
     const currentValue = ('' + document.getElementById('value-holder').value).padStart(4, '0');
 
-    for (const [key,value] of Object.entries(currentValue)) {
+    for (const [key, value] of Object.entries(currentValue)) {
       console.log(key, value);
       document.querySelector(`.digits-pane:nth-child(${parseInt(key) + 1})`).classList.value = `digits-pane c-${value}`;
     }
   }
 </script>
+</body>
+</html>
